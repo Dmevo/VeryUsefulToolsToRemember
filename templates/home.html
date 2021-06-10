@@ -7,17 +7,33 @@
     </head>
     <body>
         <div class="central">
+            <section id="formulario-tools" class="formulario">
+                <form action="{{ url_for('adicionar') }}" method="post" enctype="application/x-www-form-urlencoded">
+                    <label for="tool-nome">Nome:</label>
+                    <input id="tool-nome" type="text" name="nome">
+                    <label for="tool-url">URL:</label>
+                    <input id="tool-url" type="url" name="url">
+                    <label for="tool-descricao">Descrição:</label>
+                    <textarea id="tool-descricao" type="text" name="descricao"></textarea>
+                    <label for="tool-tag">Tags:</label>
+                    <input id="tool-tag" type="text" name="tag">
+                    <input type="submit">
+                </form>
+            </section>
+
             <section id="lista-ferramenta">
                 <h1>Very Useful Tools To Remember</h1>
+                <button class="add-button">+ Add</button>
                 {% for ferramenta in ferramenta_list %}    
                     <section class="ferramenta" id="ferramenta-{{ ferramenta.get_id() }}">
-                        <header><h3>{{ ferramenta.get_nome() }}</h3></header>
-                        <article><p class="descricao">{{ ferramenta.get_descricao() }}</p>
+                        <header><a href="{{ ferramenta.get_link() }}" target="_blank" class="link-nome">{{ ferramenta.get_nome() }}</a></header>
+                        <article>
+                            <p class="descricao">{{ ferramenta.get_descricao() }}</p>
                         {% for tag in ferramenta.get_tag() %}
                             <p class="tag">#{{ tag }}</p>
                         {% endfor %}
                         </article>
-                        <a href="{{ ferramenta.get_link() }}" target="_blank" class="link-nome">Acessar</a>
+                        <button class="remover-button">X Remover</button>
                     </section>
                 {% endfor %}
             </section>
