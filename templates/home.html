@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>VUTTR</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+    </head>
+    <body>
+        <div class="central">
+            <section id="lista-ferramenta">
+                <h1>Very Useful Tools To Remember</h1>
+                {% for ferramenta in ferramenta_list %}    
+                    <section class="ferramenta" id="ferramenta-{{ ferramenta.get_id() }}">
+                        <header><h3>{{ ferramenta.get_nome() }}</h3></header>
+                        <article><p class="descricao">{{ ferramenta.get_descricao() }}</p>
+                        {% for tag in ferramenta.get_tag() %}
+                            <p class="tag">#{{ tag }}</p>
+                        {% endfor %}
+                        </article>
+                        <a href="{{ ferramenta.get_link() }}" target="_blank" class="link-nome">Acessar</a>
+                    </section>
+                {% endfor %}
+            </section>
+        </div>
+    </body>
+
+</html>
