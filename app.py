@@ -6,6 +6,8 @@ app = Flask(__name__)
 ferramenta_list = [Ferramenta(1 ,"PyCharm", "https://www.jetbrains.com/pt-br/pycharm/download/#section=windows", "IDE especializada para Python", ["ide", "pycharm", "python"]), 
 Ferramenta(2, "Flask", "https://flask.palletsprojects.com/en/2.0.x/", "Framework para Python", ["framework", "python", "flask"]),]
 
+#ferramenta_list = []
+
 @app.route("/", methods=['GET'])
 def home():
     return render_template("home.html", ferramenta_list=ferramenta_list)
@@ -19,5 +21,13 @@ def adicionar():
     id = len(ferramenta_list) + 1
     ferramenta = Ferramenta(id, nome, url, descricao, tag)
     ferramenta_list.append(ferramenta)
-
     return render_template("home.html", ferramenta_list=ferramenta_list)
+
+@app.route("/excluir/<id>", methods=['GET'])
+def excluir(id):
+    for ferramenta in ferramenta_list:
+        if ferramenta.get_id() == int(id):
+            ferramenta_list.remove(ferramenta)
+            return render_template("home.html", ferramenta_list=ferramenta_list)
+    return render_template("home.html", ferramenta_list=ferramenta_list), 404
+    

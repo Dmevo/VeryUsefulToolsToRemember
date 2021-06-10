@@ -33,7 +33,7 @@
                             <p class="tag">#{{ tag }}</p>
                         {% endfor %}
                         </article>
-                        <button class="remover-button">X Remover</button>
+                        <footer><a href="{{ url_for('excluir', id=ferramenta.get_id()) }}" class="remover-button">X Remover</a></footer>
                     </section>
                 {% endfor %}
             </section>
