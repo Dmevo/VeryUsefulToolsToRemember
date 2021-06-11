@@ -46,10 +46,11 @@ h1 {
     border-style: solid;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 20px;
+    padding-top: 5px;
     padding-bottom: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
+    font-size: 20px;
 }
 
 .remover-button {
@@ -62,7 +63,39 @@ h1 {
     font-weight: bold;
 }
 
+.add-button {
+    border-style: solid;
+    text-decoration: none;
+    color: inherit;
+    border-width: 2px;
+    padding: 5px;
+    background-color: #bfbfbf;
+    font-weight: bold;
+}
+
+.reset-button {
+    border-style: solid;
+    text-decoration: none;
+    color: inherit;
+    border-width: 2px;
+    padding: 5px;
+    background-color: #bfbfbf;
+    font-weight: bold;
+}
+
 footer {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.busca {
+    background-color: #f2f2f2;
+    border-style: solid;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 20px;
 }

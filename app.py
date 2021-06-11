@@ -30,4 +30,21 @@ def excluir(id):
             ferramenta_list.remove(ferramenta)
             return render_template("home.html", ferramenta_list=ferramenta_list)
     return render_template("home.html", ferramenta_list=ferramenta_list), 404
-    
+
+@app.route("/busca", methods=['GET'])
+def busca():
+    ferramenta_list_filtrado = []
+    pesquisa = request.args.get('pesquisa')
+    pesquisa_tag = request.args.get('tag', None)
+    for ferramenta in ferramenta_list:
+        if pesquisa_tag == "pesquisar-tag":
+            if pesquisa in ferramenta.get_tag():
+                ferramenta_list_filtrado.append(ferramenta)
+        elif pesquisa_tag == None:
+            if pesquisa in ferramenta.get_nome() or pesquisa in ferramenta.get_descricao():
+                ferramenta_list_filtrado.append(ferramenta)
+
+
+    return render_template("home.html", ferramenta_list=ferramenta_list_filtrado)
+
+            

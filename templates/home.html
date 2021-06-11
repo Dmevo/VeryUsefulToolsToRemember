@@ -7,23 +7,32 @@
     </head>
     <body>
         <div class="central">
-            <section id="formulario-tools" class="formulario">
+            <section id="formulario-ferramenta" class="formulario">
+                <p>+ Adicionar nova ferramenta</p>
                 <form action="{{ url_for('adicionar') }}" method="post" enctype="application/x-www-form-urlencoded">
-                    <label for="tool-nome">Nome:</label>
-                    <input id="tool-nome" type="text" name="nome">
-                    <label for="tool-url">URL:</label>
-                    <input id="tool-url" type="url" name="url">
-                    <label for="tool-descricao">Descrição:</label>
-                    <textarea id="tool-descricao" type="text" name="descricao"></textarea>
-                    <label for="tool-tag">Tags:</label>
-                    <input id="tool-tag" type="text" name="tag">
-                    <input type="submit">
+                    <label for="tool-nome">Nome:</label><br>
+                    <input id="tool-nome" type="text" name="nome"><br>
+                    <label for="tool-url">URL:</label><br>
+                    <input id="tool-url" type="url" name="url"><br>
+                    <label for="tool-descricao">Descrição:</label><br>
+                    <textarea id="tool-descricao" type="text" name="descricao"></textarea><br>
+                    <label for="tool-tag">Tags:</label><br>
+                    <input id="tool-tag" type="text" name="tag"><br>
+                    <input type="submit"><br>
                 </form>
             </section>
-
+            <h1>Very Useful Tools To Remember</h1>
+            <a class="add-button" href="">+ Add</a> <a class="reset-button" href="/">Reset</a>
             <section id="lista-ferramenta">
-                <h1>Very Useful Tools To Remember</h1>
-                <button class="add-button">+ Add</button>
+                <section id="busca-ferramenta" class="busca">
+                    <form action="{{ url_for('busca') }}" method="get" enctype="application/x-www-form-urlencoded">
+                        <label for="ferramenta-pesquisa">Pesquisar:</label>
+                        <input type="text" id="ferramenta-pesquisa" name="pesquisa">
+                        <input type="submit"><br>
+                        <label for="pesquisar-tag">Pesquisar por Tags:</label>
+                        <input type="checkbox" id="pesquisar-tag" name="tag" value="pesquisar-tag">
+                    </form>
+                </section>
                 {% for ferramenta in ferramenta_list %}    
                     <section class="ferramenta" id="ferramenta-{{ ferramenta.get_id() }}">
                         <header><a href="{{ ferramenta.get_link() }}" target="_blank" class="link-nome">{{ ferramenta.get_nome() }}</a></header>
