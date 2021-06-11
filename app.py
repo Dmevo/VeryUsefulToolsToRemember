@@ -19,7 +19,8 @@ def adicionar():
     descricao = request.form.get('descricao', None)
     tag = request.form.get('tag', None)
     id = len(ferramenta_list) + 1
-    ferramenta = Ferramenta(id, nome, url, descricao, tag)
+    tag_list = tag.split(", ")
+    ferramenta = Ferramenta(id, nome, url, descricao, tag_list)
     ferramenta_list.append(ferramenta)
     return render_template("home.html", ferramenta_list=ferramenta_list)
 

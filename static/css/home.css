@@ -53,6 +53,11 @@ h1 {
     font-size: 20px;
 }
 
+.formulario-titulo {
+    font-weight: bold;
+    font-size: 25px
+}
+
 .remover-button {
     border-style: solid;
     text-decoration: none;
