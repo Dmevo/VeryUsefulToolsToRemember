@@ -5,6 +5,12 @@
         <title>VUTTR</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
     </head>
+    <script>
+        function mostrar_formulario() {
+           var formulario = document.getElementById("formulario-ferramenta");
+           formulario.style.display = "block";
+        }
+    </script>
     <body>
         <div class="central">
             <section id="formulario-ferramenta" class="formulario">
@@ -22,7 +28,7 @@
                 </form>
             </section>
             <h1>Very Useful Tools To Remember</h1>
-            <a class="add-button" href="">+ Add</a> <a class="reset-button" href="/">Reset</a>
+            <a class="add-button" onclick="mostrar_formulario()">+ Add</a> <a class="reset-button" href="/">Reset</a>
             <section id="lista-ferramenta">
                 <section id="busca-ferramenta" class="busca">
                     <form action="{{ url_for('busca') }}" method="get" enctype="application/x-www-form-urlencoded">
