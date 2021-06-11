@@ -1,19 +1,18 @@
-from flask import Flask, render_template, request
-from ferramenta import Ferramenta
-
-app = Flask(__name__)
-
-ferramenta_list = [Ferramenta(1 ,"PyCharm", "https://www.jetbrains.com/pt-br/pycharm/download/#section=windows", "IDE especializada para Python", ["ide", "pycharm", "python"]), 
-Ferramenta(2, "Flask", "https://flask.palletsprojects.com/en/2.0.x/", "Framework para Python", ["framework", "python", "flask"]),]
-
-#ferramenta_list = []
+from flask import render_template, url_for, request
+from application import app
+from application.model.entity.ferramenta import Ferramenta
+from application.model.dao.ferramentaDAO import FerramentaDAO
 
 @app.route("/", methods=['GET'])
 def home():
+    ferramenta_dao = FerramentaDAO()
+    ferramenta_list = ferramenta_dao.mostrar_ferramentas()
     return render_template("home.html", ferramenta_list=ferramenta_list)
 
 @app.route("/adicionar", methods=['POST'])
 def adicionar():
+    ferramenta_dao = FerramentaDAO()
+    ferramenta_list = ferramenta_dao.mostrar_ferramentas()
     nome = request.form.get('nome', None)
     url = request.form.get('url', None)
     descricao = request.form.get('descricao', None)
@@ -26,6 +25,8 @@ def adicionar():
 
 @app.route("/excluir/<id>", methods=['GET'])
 def excluir(id):
+    ferramenta_dao = FerramentaDAO()
+    ferramenta_list = ferramenta_dao.mostrar_ferramentas()
     for ferramenta in ferramenta_list:
         if ferramenta.get_id() == int(id):
             ferramenta_list.remove(ferramenta)
@@ -34,6 +35,8 @@ def excluir(id):
 
 @app.route("/busca", methods=['GET'])
 def busca():
+    ferramenta_dao = FerramentaDAO()
+    ferramenta_list = ferramenta_dao.mostrar_ferramentas()
     ferramenta_list_filtrado = []
     pesquisa = request.args.get('pesquisa')
     pesquisa_tag = request.args.get('tag', None)
@@ -47,5 +50,3 @@ def busca():
 
 
     return render_template("home.html", ferramenta_list=ferramenta_list_filtrado)
-
-            
