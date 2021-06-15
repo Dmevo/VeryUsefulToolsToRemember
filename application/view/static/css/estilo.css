@@ -79,6 +79,7 @@ h1 {
     padding: 5px;
     background-color: #bfbfbf;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .reset-button {

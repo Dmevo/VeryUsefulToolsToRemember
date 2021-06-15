@@ -3,12 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <title>VUTTR</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/estilo.css') }}"/>
     </head>
     <script>
         function mostrar_formulario() {
-           var formulario = document.getElementById("formulario-ferramenta");
-           formulario.style.display = "block";
+            if (document.getElementById("formulario-ferramenta").style.display == "block"){
+                document.getElementById("formulario-ferramenta").style.display = "none"
+            }
+            else {
+                document.getElementById("formulario-ferramenta").style.display = "block"
+            }
         }
     </script>
     <body>
